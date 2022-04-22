@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+   <%- include('layouts/header')%>
+    
+  </head>
+  <body>
+
+<%- include('layouts/nav') %>
+
+   <div class="height-100 bg-light">
+
+   <p class="mb-3">
+    <b>Cars ></b>List Car   
+  </p>
+
+   <div class="d-flex mt-3">
+   <h3>List Cars</h3>
+</div>
+
+<div class="addandlist d-flex">
+   <a href="/add" class="ms-auto">
+   <button type="button" class="btn kotakadd btn-primary"><i class="fa-solid fa-plus"></i> Add New Car</button>
+   </a>
+</div>
+
+   <div class="kotaklist d-flex">
+      <div class="kotak1 kotak me-3">
+        <a href="/"
+          ><b><p>All</p></b></a
+        >
+      </div>
+      <div class="kotak2 kotak me-3">
+        <a href="/filter/Small">
+          <b><p>Small</p></b></a
+        >
+      </div>
+      <div class="kotak3 kotak me-3">
+        <a href="/filter/Medium"
+          ><b><p>Medium</p></b></a
+        >
+      </div>
+      <div class="kotak4 kotak me-3">
+        <a href="/filter/Large"
+          ><b><p>Large</p></b></a
+        >
+      </div>
+    </div>
+   
+   <div class="row">
+      <% cars.forEach(data => { %>
+      <div class="col-sm-4 colomisi mt-4">
+        <div class="card">
+          <img src="<%= data.image %>png" class="card-img-top" alt="car" />
+          <div class="card-body">
+            <p class="card-text"><%= data.name %>/<%= data.type%></p>
+            <h5 class="card-title">Rp. <%= data.price %> / hari</h5>
+            <p class="ud card-text">
+              <i class="bi bi-clock"></i> Updated <%= data.updatedAt %>
+            </p>
+            <div class="row row-button">
+              <div class="col-md-6" style="background-color: unset">
+                <a href="/delete/<%= data.id %>"
+                  onclick="hapusdata('<%= data.id %>');"
+                  class="btn btn-outline-danger delete"
+                  ><i class="fa-solid fa-trash"></i> Delete</a>
+              </div>
+              <div class="col-md-6" style="background-color: unset">
+                <a
+                  href="/update/<%= data.id %>"
+                  class="btn btn-success edit"
+                  ><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+</div>
+
+
+<% if (cars.length == 0) { %>
+   <tr>
+     <td colspan="4">
+       <div class="alert alert-danger fw-bold mt-3" role="alert">
+         Data mobil masih kosong
+       </div>
+     </td>
+   </tr>
+   <% } %>
+   
+   <script>
+     const hapusdata = (id) => {
+       const swalWithBootstrapButtons = Swal.mixin({
+         customClass: {
+           confirmButton: "btn btn-success",
+           cancelButton: "btn btn-danger",
+         },
+         buttonsStyling: false,
+       });
+   
+       swalWithBootstrapButtons
+         .fire({
+           title: "Menghapus data mobil",
+           text: "Setelah di hapus, data mobil tidak dapat di kembalikan. Yakin ingin menghapus ?",
+           imageUrl: "img/mbnr.jpg",
+           imageWidth: 300,
+           imageHeight: 200,
+           imageAlt: "Custom image",
+           showCancelButton: true,
+           confirmButtonText: "Yes, delete it!",
+           cancelButtonText: "No, cancel!",
+           reverseButtons: true,
+         })
+         .then((result) => {
+           if (result.isConfirmed) {
+             swalWithBootstrapButtons.fire(
+               "Deleted!",
+               "Data berhasil di hapus",
+               "success"
+             );
+             const myTimeout = setTimeout(pindah, 2000);
+   
+             function pindah() {
+               window.location.replace(`/delete/${id}`);
+             }
+           } else if (
+             result.dismiss === Swal.DismissReason.cancel
+           ) {
+             swalWithBootstrapButtons.fire(
+               "Cancelled",
+               "Data Batal di hapus :)",
+               "error"
+             );
+           }
+         });
+     };
+   </script>
+
+  
+   <script src="https://kit.fontawesome.com/f4921a043a.js" crossorigin="anonymous"></script>
+   <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

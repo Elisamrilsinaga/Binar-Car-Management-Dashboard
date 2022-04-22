@@ -1,0 +1,28 @@
+{
+  "name": "car-management-dashboard-elisamril-sinaga",
+  "version": "1.0.0",
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/e3944/car-management-dashboard-elisamril-sinaga.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/e3944/car-management-dashboard-elisamril-sinaga/issues"
+  },
+  "homepage": "https://gitlab.com/e3944/car-management-dashboard-elisamril-sinaga#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.3",
+    "sequelize": "^6.19.0"
+  }
+}

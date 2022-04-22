@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+   <%- include('layouts/header')%>
+    
+  </head>
+  <body>
+
+<%- include('layouts/nav') %>
+
+
+<p><b>Cars > <a href="/" style="text-decoration: unset; color: black">List Car</a> > </b> Add New Car</p>
+ <h5><b>Add New Car</b></h5>
+ 
+ <form action="/add" method="post">
+   <div class="kotakinputnewcar">
+     <div class="row">
+       <div class="col-sm-3">
+         <label for="nama" class="form-label">Nama</label>
+       </div>
+       <div class="col-sm-8">
+         <input
+           name="name"
+           style="color: gray"
+           type="text"
+           class="form-control"
+           id="nama"
+           placeholder="Nama mobil"
+           required
+         />
+       </div>
+     </div>
+ 
+     <div class="row">
+       <div class="col-sm-3">
+         <label for="harga_sewa" class="form-label">Sewa Per Hari</label>
+       </div>
+       <div class="col-sm-8">
+         <input
+           name="price"
+           style="color: gray"
+           type="text"
+           class="form-control"
+           id="harga_sewa"
+           placeholder="Rp.0,-"
+           required
+         />
+       </div>
+     </div>
+ 
+     <div class="row">
+       <div class="col-sm-3">
+         <label for="type" class="form-label">Ukuran</label>
+       </div>
+       <div class="col-sm-8">
+         <select
+           name="type"
+           style="color: gray"
+           class="form-select"
+           id="type"
+           required
+         >
+           <option selected>Choose Type</option>
+           <option value="Small">Small</option>
+           <option value="Medium">Medium</option>
+           <option value="Large">Large</option>
+         </select>
+       </div>
+     </div>
+ 
+     <div class="row">
+       <div class="col-sm-3">
+         <label for="foto" class="form-label">foto</label>
+       </div>
+       <div class="col-sm-8">
+         <input
+           name="image"
+           style="color: gray"
+           type="text"
+           class="form-control"
+           id="foto"
+           placeholder="https://..."
+           required
+         />
+       </div>
+     </div>
+   </div>
+   <a href="/"><button type="button" class="btn btn-outline-primary btninput">
+       cancel
+     </button>
+    </a>
+   <button type="submit" class="btn btn-outline-primary btninput2">save</button>
+ </form>
+ 

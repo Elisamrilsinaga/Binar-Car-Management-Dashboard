@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+   <%- include('layouts/header')%>
+    
+  </head>
+  <body>
+
+<%- include('layouts/nav') %>
+
+
+<p><b>Cars ><a href="/" style="text-decoration: unset; color: black">List Car</a> > </b>Update Car Information</p>
+ <h5><b>Update Car Information</b></h5>
+ <form action="/update" method="post">
+   <input type="hidden" name="id" id="" value="<%= car.id %>" />
+   <input type="hidden" name="oldtype" id="" value="<%= car.type %>" />
+   <div class="kotakupdatenewcar">
+     <div class="row">
+       <div class="col-sm-3">
+         <label for="nama" class="form-label">Nama</label>
+       </div>
+       <div class="col-sm-8">
+         <input
+           style="color: gray"
+           type="text"
+           class="form-control"
+           id="nama"
+           name="name"
+           required
+           value="<%= car.name %>"
+         />
+       </div>
+     </div>
+ 
+     <div class="row">
+       <div class="col-sm-3">
+         <label for="harga_sewa" class="form-label">Sewa Per Hari</label>
+       </div>
+       <div class="col-sm-8">
+         <input
+           style="color: gray"
+           type="text"
+           class="form-control"
+           id="harga_sewa"
+           name="price"
+           required
+           value="<%= car.price %>"
+         />
+       </div>
+     </div>
+ 
+     <div class="row">
+       <div class="col-sm-3">
+         <label for="type" class="form-label">Ukuran</label>
+       </div>
+       <div class="col-sm-8">
+         <select
+           name="type"
+           style="color: gray"
+           class="form-select"
+           id="type"
+           required
+         >
+           <option selected>Choose Type</option>
+           <option value="Small">Small</option>
+           <option value="Medium">Medium</option>
+           <option value="Large">Large</option>
+         </select>
+       </div>
+     </div>
+ 
+     <div class="row">
+       <div class="col-sm-3">
+         <label for="foto" class="form-label">foto</label>
+       </div>
+       <div class="col-sm-8">
+         <input
+           style="color: gray"
+           type="text"
+           class="form-control"
+           id="image"
+           required
+           name="image"
+           value="<%= car.image %>"
+         />
+       </div>
+     </div>
+   </div>
+   <div class="btninput">
+     <a href="/"><button type="button" class="btn btn-outline-primary">cancel</button></a>
+     <button type="submit" class="btn btn-outline-primary">save</button>
+   </div>
+ </form>
+ 
